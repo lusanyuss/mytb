@@ -38,6 +38,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+
 }
 
 dependencies {

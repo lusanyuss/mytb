@@ -1,0 +1,344 @@
+[
+  {
+    "channelTitle": "#Music",
+    "channelId": "UC-9-kyTW8ZkZNDHQJ6FgpwQ",
+    "playLists": [
+      {
+        "playlistName": "Popular Music Videos",
+        "playlist__id": "PLFgquLnL59alCl_2TQvOiD5Vgm1hCaGSI"
+      },
+      {
+        "playlistName": "New Music This Week",
+        "playlist__id": "PLFgquLnL59alW3xmYiWRaoz0oM3H17Lth"
+      },
+      {
+        "playlistName": "Latest Videos - Music",
+        "playlist__id": "PLFgquLnL59akA2PflFpeQG9L01VFg90wS"
+      },
+      {
+        "playlistName": "Top Tracks - Pop Music",
+        "playlist__id": "PLDcnymzs18LVXfO_x0Ei0R24qDbVtyy66"
+      },
+      {
+        "playlistName": "Spotlight On: Songs Of The Summer",
+        "playlist__id": "PLFgquLnL59akdmyQ1XGkZoEVSXkQYy9_H"
+      },
+      {
+        "playlistName": "Top Tracks - Electronic Music",
+        "playlist__id": "PLFPg_IUxqnZN1odUAOrgMifStf-0VZ-lj"
+      },
+      {
+        "playlistName": "Top Tracks - Latin American Music",
+        "playlist__id": "PLcfQmtiAG0X_byEjBwRXaGJ9WoJL_ntNr"
+      },
+      {
+        "playlistName": "Top Tracks - Hip Hop Music",
+        "playlist__id": "PLH6pfBXQXHECUaIU3bu9rjG2L6Uhl5A2q"
+      },
+      {
+        "playlistName": "Movie Soundtrack Hits '15",
+        "playlist__id": "PLFgquLnL59alq_j8zF0tJOohLlHl4gmFl"
+      },
+      {
+        "playlistName": "Top Tracks - Middle Eastern Music",
+        "playlist__id": "PLI39zLOagDhxUAsY315e1ERavyUqZ6ovS"
+      },
+      {
+        "playlistName": "Top Tracks - Soul Music",
+        "playlist__id": "PLQog_FHUHAFVRsO4otlwzn0bZspSAefOl"
+      },
+      {
+        "playlistName": "Top Tracks - Reggae",
+        "playlist__id": "PLYAYp5OI4lRKUjxyMxpxZvSJsJLJBu0XH"
+      },
+      {
+        "playlistName": "Top Tracks - Asian Music",
+        "playlist__id": "PL0zQrw6ZA60bl5Cq6cv83xp8E38oIzosA"
+      },
+      {
+        "playlistName": "Top Tracks - Jazz",
+        "playlist__id": "PLMcThd22goGZoKIj4VAX4GCoYjoCNLiTC"
+      },
+      {
+        "playlistName": "Top Tracks - Vocal Music",
+        "playlist__id": "PLo5cIhJ0-8jnS_E2ZG0Je2Dt_jQuvgP_Y"
+      },
+      {
+        "playlistName": "Top Tracks - Children's Music",
+        "playlist__id": "PLq-ZRVZ1W4FcimhT61WDkh71_3CDL1KBD"
+      },
+      {
+        "playlistName": "Spotlight On: Weekend soundtrack",
+        "playlist__id": "PLFgquLnL59akYTGd40gT26IYoL2kuhQZO"
+      },
+      {
+        "playlistName": "Celebs Covering Celebs",
+        "playlist__id": "PLFgquLnL59aldqu6uJMvSDSdVm7nKOXRy"
+      },
+      {
+        "playlistName": "Top Tracks - Folk Music",
+        "playlist__id": "PLFbKRa_kS4i852ZBCW0XyrVEZzanMFY2a"
+      },
+      {
+        "playlistName": "Unlikeliest Collabs in Music",
+        "playlist__id": "PLFgquLnL59amnyqxA4V3m5f98tQSYwi83"
+      },
+      {
+        "playlistName": "CMA Awards '15 Nominees",
+        "playlist__id": "PLFgquLnL59amLNLrPeLHmiLqWD6Bx_U2m"
+      },
+      {
+        "playlistName": "On the Rise: What's next",
+        "playlist__id": "PLFgquLnL59ak5gmnz28ZiMd59ryeTPXjT"
+      },
+      {
+        "playlistName": "Top Tracks - Traditional Music",
+        "playlist__id": "PLzOnHpG7pFWJoAgEMyCpi8btTYPvzwTU5"
+      },
+      {
+        "playlistName": "Top Tracks - Funk",
+        "playlist__id": "PLlAUeZBl7BV6lWENNsb78zZrgyzmOBwrq"
+      },
+      {
+        "playlistName": "Top Tracks - African Music",
+        "playlist__id": "PLJ0Pbja2awaNscjVUAzmED4RwxpwbCPYd"
+      },
+      {
+        "playlistName": "Top Tracks - Ska",
+        "playlist__id": "PLhi9vMiphA8JFV-UHsneYH3i6mgp6ZGWR"
+      },
+      {
+        "playlistName": "Top Tracks - Rhythm & Blues",
+        "playlist__id": "PLWNXn_iQ2yrIE-txPYCsmdmRJv-iSTPsL"
+      },
+      {
+        "playlistName": "Top Tracks - Indie Music",
+        "playlist__id": "PLSn1U7lJJ1UljgQSw3bfmYmfB1en3MbEF"
+      },
+      {
+        "playlistName": "Top Tracks - Classical Music",
+        "playlist__id": "PLVXq77mXV53_3HqhCLGv4mz3oVGYd2Aup"
+      },
+      {
+        "playlistName": "Top Tracks - Christian Music",
+        "playlist__id": "PLLMA7Sh3JsORlZSt9eMT49ejfGYrY0IKG"
+      },
+      {
+        "playlistName": "Top Tracks - Blues",
+        "playlist__id": "PLzauiyXIK7Rj1h23BPvDb3sQwmzHhRuyX"
+      },
+      {
+        "playlistName": "Top Tracks - Rock Music",
+        "playlist__id": "PLhd1HyMTk3f5yqcPXjLo8qroWJiMMFBSk"
+      },
+      {
+        "playlistName": "Top Tracks - Country Music",
+        "playlist__id": "PLvLX2y1VZ-tEmqtENBW39gdozqFCN_WZc"
+      },
+      {
+        "playlistName": "Top Tracks - Disco",
+        "playlist__id": "PLtYHnS0mhkb_WVLIVwCErFLnjtJrSozkt"
+      },
+      {
+        "playlistName": "Top Tracks - New-Age Music",
+        "playlist__id": "PLNDw0dvPrjjcEIv7Q-LE5of7uUOmZ2tgD"
+      }
+    ],
+    "paiming": "1",
+    "custom_playlists": true,
+    "isHide": false,
+    "type": ""
+  },
+  {
+    "channelTitle": "Best New Songs | 2015",
+    "channelId": "UC-9-kyTW8ZkZNDHQJ6FgpwQ",
+    "playLists": [
+      {
+        "playlistName": "VEVO - Best New Songs| 2015",
+        "playlist__id": "PLvFYFNbi-IBFeP5ALr50hoOmKiYRMvzUq"
+      },
+      {
+        "playlistName": "Billboard HOT 100 17th October 2015 PLAYLIST",
+        "playlist__id": "PLEpfh9jiEpYQJWMW2EF2PgCBhz2SQu6Ld"
+      },
+      {
+        "playlistName": "OCTOBER 2015 Top 40 Songs(Best Songs of 2015)",
+        "playlist__id": "PLcfgpjzMYTNWqhb2ZgEWNGqD00Pp_ugVW"
+      },
+      {
+        "playlistName": "Hottest Country Songs of the Moment 2015 (best summer hits)",
+        "playlist__id": "PL2BN1Zd8U_MsyMeK8r9Vdv1lnQGtoJaSa"
+      },
+      {
+        "playlistName": "2014-2015 POP MUSIC",
+        "playlist__id": "PLFao4SbVn-jzZTOnP6DreErD6dMWaH7xa"
+      },
+      {
+        "playlistName": "Songs 2015 Music",
+        "playlist__id": "PLFLjA-BCYmWH2x8545frQQStBS2z3qduv"
+      },
+      {
+        "playlistName": "The Best Of 2015 VEVO",
+        "playlist__id": "PLhS3DcL9XnJiyhbMAUPOK9d0qazofnb7O"
+      },
+      {
+        "playlistName": "POP Music Playlist | 2015",
+        "playlist__id": "PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj"
+      },
+      {
+        "playlistName": "UK Top 100 - Top 40 Singles Chart",
+        "playlist__id": "PLD7SPvDoEddYd3OLS9T2ZT4eGc1iTwYG4"
+      },
+      {
+        "playlistName": "OCTOBER 2015 Top 40 Songs",
+        "playlist__id": "PLcfgpjzMYTNWqhb2ZgEWNGqD00Pp_ugVW"
+      },
+      {
+        "playlistName": "Hottest Country Songs of the Moment 2015 (best summer hits)",
+        "playlist__id": "PL2BN1Zd8U_MsyMeK8r9Vdv1lnQGtoJaSa"
+      },
+      {
+        "playlistName": "2014-2015 POP MUSIC",
+        "playlist__id": "PLFao4SbVn-jzZTOnP6DreErD6dMWaH7xa"
+      },
+      {
+        "playlistName": "POP Music Playlist | 2015",
+        "playlist__id": "PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj"
+      },
+      {
+        "playlistName": "UK Top 100 - Top 40 Singles Chart",
+        "playlist__id": "PLD7SPvDoEddYd3OLS9T2ZT4eGc1iTwYG4"
+      },
+      {
+        "playlistName": "The Best Of 2015 VEVO playlist",
+        "playlist__id": "PLhS3DcL9XnJiyhbMAUPOK9d0qazofnb7O"
+      },
+      {
+        "playlistName": "Top 40 Christian Songs 2015",
+        "playlist__id": "PLWvahZRxLnLMSWeULnub0CCeQzvxGM8hB"
+      },
+      {
+        "playlistName": "Billboard Top Songs 2015",
+        "playlist__id": "PL55713C70BA91BD6E"
+      },
+      {
+        "playlistName": "NEW! VEVO's 100 Most Viewed Music Videos",
+        "playlist__id": "PLhS3DcL9XnJi7Zzlakipk9k5_FaHwgXbj"
+      },
+      {
+        "playlistName": "Billboard Hot Country Songs - 17th October",
+        "playlist__id": "PLEpfh9jiEpYSY_c0jsitStzlzIl1TOvBk"
+      },
+      {
+        "playlistName": "UK Top 40 Songs This Week | 16th October ",
+        "playlist__id": "PLx0sYbCqOb8Q_CLZC2BdBSKEEB59BOPUM"
+      },
+      {
+        "playlistName": "VEVO Playlist 2015 hip hop October ! Top 40",
+        "playlist__id": "PLhS3DcL9XnJgGz07uMlGr5gJYE2w8rn_K"
+      },
+      {
+        "playlistName": "Naija Music Videos 2015",
+        "playlist__id": "PLJwF7oEl9RrvcYQ94bP7ltsPgVVsOd3Om"
+      },
+      {
+        "playlistName": "Billboard Hot 100 | Top 50 this week",
+        "playlist__id": "PLD7SPvDoEddZUrho5ynsBfaI7nqhaNN5c"
+      },
+      {
+        "playlistName": "2014 - 2015 Top Gospel and Praise Songs",
+        "playlist__id": "PLbIwq6HuKrKw9-c63LJcynWeuJ6IjxOpx"
+      },
+      {
+        "playlistName": "2015 Party Music Playlist - October 2015",
+        "playlist__id": "PLEPQby6_o7m3LmXKUsDhR-C_f1KPbDxRQ"
+      },
+      {
+        "playlistName": "Νέες Κυκλοφορίες 2015 ( New Song 2015 )",
+        "playlist__id": "PLstLQ_17-gekQpn8u7iEvF5ijEzYUu5x5"
+      }
+    ],
+    "paiming": "1",
+    "custom_playlists": true,
+    "isHide": false,
+    "type": ""
+  },
+  {
+    "channelTitle": "Best New Songs | 2015",
+    "channelId": "UC-9-kyTW8ZkZNDHQJ6FgpwQ",
+    "playLists": [
+      {
+        "playlistName": "VEVO - Best New Songs| 2015",
+        "playlist__id": "PLvFYFNbi-IBFeP5ALr50hoOmKiYRMvzUq"
+      },
+      {
+        "playlistName": "Billboard HOT 100 17th October 2015 PLAYLIST",
+        "playlist__id": "PLEpfh9jiEpYQJWMW2EF2PgCBhz2SQu6Ld"
+      },
+      {
+        "playlistName": "OCTOBER 2015 Top 40 Songs(Best Songs of 2015)",
+        "playlist__id": "PLcfgpjzMYTNWqhb2ZgEWNGqD00Pp_ugVW"
+      },
+      {
+        "playlistName": "Hottest Country Songs of the Moment 2015 (best summer hits)",
+        "playlist__id": "PL2BN1Zd8U_MsyMeK8r9Vdv1lnQGtoJaSa"
+      },
+      {
+        "playlistName": "2014-2015 POP MUSIC",
+        "playlist__id": "PLFao4SbVn-jzZTOnP6DreErD6dMWaH7xa"
+      },
+      {
+        "playlistName": "Songs 2015 Music",
+        "playlist__id": "PLFLjA-BCYmWH2x8545frQQStBS2z3qduv"
+      },
+      {
+        "playlistName": "The Best Of 2015 VEVO",
+        "playlist__id": "PLhS3DcL9XnJiyhbMAUPOK9d0qazofnb7O"
+      },
+      {
+        "playlistName": "POP Music Playlist | 2015",
+        "playlist__id": "PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj"
+      },
+      {
+        "playlistName": "UK Top 100 - Top 40 Singles Chart",
+        "playlist__id": "PLD7SPvDoEddYd3OLS9T2ZT4eGc1iTwYG4"
+      },
+      {
+        "playlistName": "OCTOBER 2015 Top 40 Songs",
+        "playlist__id": "PLcfgpjzMYTNWqhb2ZgEWNGqD00Pp_ugVW"
+      },
+      {
+        "playlistName": "Hottest Country Songs of the Moment 2015 (best summer hits)",
+        "playlist__id": "PL2BN1Zd8U_MsyMeK8r9Vdv1lnQGtoJaSa"
+      },
+      {
+        "playlistName": "2014-2015 POP MUSIC",
+        "playlist__id": "PLFao4SbVn-jzZTOnP6DreErD6dMWaH7xa"
+      },
+      {
+        "playlistName": "",
+        "playlist__id": ""
+      },
+      {
+        "playlistName": "",
+        "playlist__id": ""
+      },
+      {
+        "playlistName": "",
+        "playlist__id": ""
+      },
+      {
+        "playlistName": "",
+        "playlist__id": ""
+      },
+      {
+        "playlistName": "",
+        "playlist__id": ""
+      },
+    ],
+    "paiming": "1",
+    "custom_playlists": true,
+    "isHide": false,
+    "type": ""
+  }
+]

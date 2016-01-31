@@ -3,7 +3,6 @@ package com.mytb;
 import android.content.Context;
 
 import com.google.android.gms.common.Scopes;
-import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.HttpTransport;
@@ -58,8 +57,8 @@ public class YoutubeUtil {
         for (SearchResult result : results) {
             VideoItem item = new VideoItem();
             items.add(item);
-            MyLog.v(result.getId().getVideoId());
         }
+        MyLog.v(items.size() + "");
         return items;
     }
 
@@ -88,8 +87,10 @@ public class YoutubeUtil {
 
             for (Channel result : results) {
                 ChannelItem item = new ChannelItem();
-                MyLog.v(result.getId());
+                item.id = result.getId();
+                items.add(item);
             }
+            MyLog.v(items.size() + "");
         } catch (IOException e) {
 
         }
@@ -98,7 +99,7 @@ public class YoutubeUtil {
 
 
     /**
-     * 根据视频集合列表id  查询 视频集合列表
+     * 根据视频集合id  查询 视频集合
      *
      * @param context
      * @param playlistId
@@ -119,12 +120,14 @@ public class YoutubeUtil {
         itemRequest.setKey(KEY);
         itemRequest.setPlaylistId(playlistId);
         String nextToken = "";
-        do {
-            itemRequest.setPageToken(nextToken);
-            PlaylistItemListResponse itemListResponse = itemRequest.execute();
-            itemList.addAll(itemListResponse.getItems());
-            nextToken = itemListResponse.getNextPageToken();
-        } while (nextToken != null);
+//        do {
+        itemRequest.setPageToken(nextToken);
+        PlaylistItemListResponse itemListResponse = itemRequest.execute();
+        itemList.addAll(itemListResponse.getItems());
+//            nextToken = itemListResponse.getNextPageToken();
+//        } while (nextToken != null);
+
+
         for (PlaylistItem playlistItem : itemList) {
             VideoItem item = new VideoItem();
             item.id = playlistItem.getId();
@@ -134,28 +137,45 @@ public class YoutubeUtil {
         return items;
     }
 
+    /**
+     * 根据视频集合列表id  查询 视频集合列表
+     *
+     * @param context
+     * @param channelId
+     * @return
+     * @throws Exception
+     */
 
-    public static List<VideoLists> searchVideoLists(Context context, GoogleAccountCredential credential, String playlistId) throws Exception {
+    public static List<VideoLists> searchVideoLists(Context context, String channelId) throws Exception {
         MyLog.v("---------------------");
         List<VideoLists> items = new ArrayList<VideoLists>();
         YouTube youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
             public void initialize(HttpRequest request) throws IOException {
             }
         }).setApplicationName(context.getString(R.string.app_name)).build();
-        PlaylistListResponse playlistListResponse = youtube.playlists().
-                list("snippet,localizations").setId(playlistId).execute();
-        List<Playlist> playlistList = playlistListResponse.getItems();
 
-        if (playlistList.isEmpty()) {
-            System.out.println("Can't find a playlist with ID: " + playlistId);
+        YouTube.Playlists.List mPlaylistsList = youtube.playlists().
+                list("id,snippet,localizations");
+        //设置参数
+        mPlaylistsList.setKey(KEY);
+        mPlaylistsList.setChannelId(channelId);
+
+        //执行得到数据
+        PlaylistListResponse playlistListResponse = mPlaylistsList.execute();
+        List<Playlist> playlists = playlistListResponse.getItems();
+
+        //判断数据
+        if (playlists.isEmpty()) {
+            System.out.println("Can't find a playlist with channelId: " + channelId);
             return items;
         }
-
-        for (Playlist result : playlistList) {
+        //转换数据
+        for (Playlist result : playlists) {
             VideoLists item = new VideoLists();
-            item.id=result.getId();
+            item.id = result.getId();
             items.add(item);
         }
+        MyLog.v(items.size() + "");
         return items;
     }
 
