@@ -1,0 +1,5 @@
+keytool -exportcert -alias uhouzz_android -keystore app/key  -list -v
+
+com.mytb
+45:82:24:26:9A:2C:DD:92:EA:77:9E:FF:E6:67:E5:AD:4D:B7:FC:5B
+
