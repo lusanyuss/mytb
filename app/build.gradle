@@ -11,10 +11,31 @@ android {
         versionCode 1
         versionName "1.0"
     }
-    buildTypes {
+    signingConfigs {
         release {
+            storeFile file('key')
+            storePassword '123456'
+            keyAlias 'uhouzz_android'
+            keyPassword '123456'
+        }
+        debug {
+            storeFile file('key')
+            storePassword '123456'
+            keyAlias 'uhouzz_android'
+            keyPassword '123456'
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
 }

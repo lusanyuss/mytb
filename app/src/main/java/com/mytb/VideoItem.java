@@ -1,6 +1,6 @@
 package com.mytb;
 
-public class Video {
+public class VideoItem {
     public String title;
     public String description;
     public String thumbnailURL;

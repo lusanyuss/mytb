@@ -1,8 +1,8 @@
 package com.mytb;
 
 public class VideoLists {
-    private String title;
-    private String description;
-    private String thumbnailURL;
-    private String id;
+    public String id;
+    public String title;
+    public String description;
+    public String thumbnailURL;
 }

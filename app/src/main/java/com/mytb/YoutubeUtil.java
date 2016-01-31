@@ -1,7 +1,6 @@
 package com.mytb;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 
 import com.google.android.gms.common.Scopes;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
@@ -30,23 +29,25 @@ public class YoutubeUtil {
 
     public static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
     public static final JsonFactory JSON_FACTORY = new JacksonFactory();
-    public static final String KEY = "AIzaSyALzlQojFizSoRWcsmACzJTws50N_VVKc0";
+    public static final String KEY = "AIzaSyCrarQG6vxxvFUUAfjhzHbGw9-teMzwCgo";
     public static final String[] SCOPES = {Scopes.PROFILE, YouTubeScopes.YOUTUBE};
 
-    @NonNull
-    private static YouTube initYoutube(Context context, GoogleAccountCredential credential) {
-        YouTube youTube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY,
-                credential).setApplicationName(context.getString(R.string.app_name)).build();
-        return youTube;
-    }
+    /**
+     * 根据关键字查询数据youtube视频列表
+     *
+     * @param context
+     * @param keywords
+     * @return
+     * @throws Exception
+     */
 
-    public static List<Video> search(Context context, String keywords) throws Exception {
+    public static List<VideoItem> search(Context context, String keywords) throws Exception {
         MyLog.v("---------------------");
         YouTube youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
             public void initialize(HttpRequest request) throws IOException {
             }
         }).setApplicationName(context.getString(R.string.app_name)).build();
-        List<Video> items = new ArrayList<Video>();
+        List<VideoItem> items = new ArrayList<VideoItem>();
         YouTube.Search.List query = youtube.search().list("id,snippet");
         query.setKey(KEY);
         query.setType("video");
@@ -55,21 +56,33 @@ public class YoutubeUtil {
         SearchListResponse response = query.execute();
         List<SearchResult> results = response.getItems();
         for (SearchResult result : results) {
-            Video item = new Video();
+            VideoItem item = new VideoItem();
             items.add(item);
             MyLog.v(result.getId().getVideoId());
         }
         return items;
     }
 
-    public static List<ChannelItem> searchChannels(Context context, GoogleAccountCredential credential, String channelId) throws Exception {
+    /**
+     * 根据类别id查询频道列表
+     *
+     * @param context
+     * @param categoryId
+     * @return
+     * @throws Exception
+     */
+
+    public static List<ChannelItem> searchChannels(Context context, String categoryId) throws Exception {
         MyLog.v("---------------------");
-        YouTube youtube = initYoutube(context, credential);
+        YouTube youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
+            public void initialize(HttpRequest request) throws IOException {
+            }
+        }).setApplicationName(context.getString(R.string.app_name)).build();
         List<ChannelItem> items = new ArrayList<ChannelItem>();
         try {
             YouTube.Channels.List query = youtube.channels().list("id,snippet,brandingSettings,localizations");
             query.setKey(KEY);
-            query.setId(channelId);
+            query.setCategoryId(categoryId);
             ChannelListResponse response = query.execute();
             List<Channel> results = response.getItems();
 
@@ -84,30 +97,40 @@ public class YoutubeUtil {
     }
 
 
-    public static List<VideoList> searchVideoList(Context context, GoogleAccountCredential credential, String playlistId) throws Exception {
-        MyLog.v("---------------------" + credential.getSelectedAccountName());
-        List<VideoList> items = new ArrayList<VideoList>();
-        YouTube youtube = initYoutube(context, credential);
+    /**
+     * 根据视频集合列表id  查询 视频集合列表
+     *
+     * @param context
+     * @param playlistId
+     * @return
+     * @throws Exception
+     */
+    public static List<VideoItem> searchVideoList(Context context, String playlistId) throws Exception {
+        List<VideoItem> items = new ArrayList<VideoItem>();
+        YouTube youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
+            public void initialize(HttpRequest request) throws IOException {
+            }
+        }).setApplicationName(context.getString(R.string.app_name)).build();
 
-        List<PlaylistItem> playlistItemList = new ArrayList<PlaylistItem>();
+        List<PlaylistItem> itemList = new ArrayList<PlaylistItem>();
         // Retrieve the playlist of the channel's uploaded videos.
-        YouTube.PlaylistItems.List playlistItemRequest =
+        YouTube.PlaylistItems.List itemRequest =
                 youtube.playlistItems().list("id,contentDetails,snippet");
-        playlistItemRequest.setPlaylistId(playlistId);
+        itemRequest.setKey(KEY);
+        itemRequest.setPlaylistId(playlistId);
         String nextToken = "";
         do {
-            playlistItemRequest.setPageToken(nextToken);
-            PlaylistItemListResponse playlistItemResult = playlistItemRequest.execute();
-            playlistItemList.addAll(playlistItemResult.getItems());
-            nextToken = playlistItemResult.getNextPageToken();
+            itemRequest.setPageToken(nextToken);
+            PlaylistItemListResponse itemListResponse = itemRequest.execute();
+            itemList.addAll(itemListResponse.getItems());
+            nextToken = itemListResponse.getNextPageToken();
         } while (nextToken != null);
-
-        MyLog.v(playlistItemList.size() + "");
-        for (PlaylistItem playlistItem : playlistItemList) {
-            VideoLists item = new VideoLists();
-            MyLog.v(playlistItem.getId());
+        for (PlaylistItem playlistItem : itemList) {
+            VideoItem item = new VideoItem();
+            item.id = playlistItem.getId();
+            items.add(item);
         }
-
+        MyLog.v(items.size() + "");
         return items;
     }
 
@@ -115,7 +138,10 @@ public class YoutubeUtil {
     public static List<VideoLists> searchVideoLists(Context context, GoogleAccountCredential credential, String playlistId) throws Exception {
         MyLog.v("---------------------");
         List<VideoLists> items = new ArrayList<VideoLists>();
-        YouTube youtube = initYoutube(context, credential);
+        YouTube youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
+            public void initialize(HttpRequest request) throws IOException {
+            }
+        }).setApplicationName(context.getString(R.string.app_name)).build();
         PlaylistListResponse playlistListResponse = youtube.playlists().
                 list("snippet,localizations").setId(playlistId).execute();
         List<Playlist> playlistList = playlistListResponse.getItems();
@@ -127,9 +153,9 @@ public class YoutubeUtil {
 
         for (Playlist result : playlistList) {
             VideoLists item = new VideoLists();
-            MyLog.v(result.getId());
+            item.id=result.getId();
+            items.add(item);
         }
-
         return items;
     }
 
