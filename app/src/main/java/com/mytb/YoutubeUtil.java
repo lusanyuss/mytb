@@ -32,7 +32,6 @@ public class YoutubeUtil {
     public static final String[] SCOPES = {Scopes.PROFILE, YouTubeScopes.YOUTUBE};
 
     /**
-     * ��ݹؼ��ֲ�ѯ���youtube��Ƶ�б�
      *
      * @param context
      * @param keywords
@@ -63,7 +62,6 @@ public class YoutubeUtil {
     }
 
     /**
-     * ������id��ѯƵ���б�
      *
      * @param context
      * @param categoryId
@@ -99,7 +97,44 @@ public class YoutubeUtil {
 
 
     /**
-     * �����Ƶ����id  ��ѯ ��Ƶ����
+     *
+     * @param context
+     * @param channelId
+     * @return
+     * @throws Exception
+     */
+
+    public static List<VideoLists> searchVideoLists(Context context, String channelId) throws Exception {
+        MyLog.v("---------------------searchVideoLists");
+        List<VideoLists> items = new ArrayList<VideoLists>();
+        YouTube youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
+            public void initialize(HttpRequest request) throws IOException {
+            }
+        }).setApplicationName(context.getString(R.string.app_name)).build();
+
+        YouTube.Playlists.List mPlaylistsList = youtube.playlists().
+                list("id,snippet,localizations");
+        mPlaylistsList.setKey(KEY);
+        mPlaylistsList.setChannelId(channelId);
+
+        PlaylistListResponse playlistListResponse = mPlaylistsList.execute();
+        List<Playlist> playlists = playlistListResponse.getItems();
+
+        if (playlists.isEmpty()) {
+            System.out.println("Can't find a playlist with channelId: " + channelId);
+            return items;
+        }
+        for (Playlist result : playlists) {
+            VideoLists item = new VideoLists();
+            item.id = result.getId();
+            items.add(item);
+        }
+        MyLog.v(items.size() + "");
+        return items;
+    }
+
+
+    /**
      *
      * @param context
      * @param playlistId
@@ -138,47 +173,7 @@ public class YoutubeUtil {
         return items;
     }
 
-    /**
-     * �����Ƶ�����б�id  ��ѯ ��Ƶ�����б�
-     *
-     * @param context
-     * @param channelId
-     * @return
-     * @throws Exception
-     */
 
-    public static List<VideoLists> searchVideoLists(Context context, String channelId) throws Exception {
-        MyLog.v("---------------------searchVideoLists");
-        List<VideoLists> items = new ArrayList<VideoLists>();
-        YouTube youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
-            public void initialize(HttpRequest request) throws IOException {
-            }
-        }).setApplicationName(context.getString(R.string.app_name)).build();
-
-        YouTube.Playlists.List mPlaylistsList = youtube.playlists().
-                list("id,snippet,localizations");
-        //���ò���
-        mPlaylistsList.setKey(KEY);
-        mPlaylistsList.setChannelId(channelId);
-
-        //ִ�еõ����
-        PlaylistListResponse playlistListResponse = mPlaylistsList.execute();
-        List<Playlist> playlists = playlistListResponse.getItems();
-
-        //�ж����
-        if (playlists.isEmpty()) {
-            System.out.println("Can't find a playlist with channelId: " + channelId);
-            return items;
-        }
-        //ת�����
-        for (Playlist result : playlists) {
-            VideoLists item = new VideoLists();
-            item.id = result.getId();
-            items.add(item);
-        }
-        MyLog.v(items.size() + "");
-        return items;
-    }
 
 
 //    YouTube.Channels.List channelRequest = youtube.channels().list("contentDetails");
