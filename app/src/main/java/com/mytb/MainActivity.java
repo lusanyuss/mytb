@@ -59,9 +59,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     protected Void doInBackground(Void... params) {
                         try {
-//                            YoutubeUtil.search(MainActivity.this, "music");
-//                            YoutubeUtil.searchChannels(MainActivity.this, "GCQmVzdCBvZiBZb3VUdWJl");
-//                            YoutubeUtil.searchVideoList(MainActivity.this, "PLFgquLnL59amAlpdLTWJTX6BIPunJ8s-A");
+                            YoutubeUtil.search(MainActivity.this, "music");
+                            YoutubeUtil.searchChannels(MainActivity.this, "GCQmVzdCBvZiBZb3VUdWJl");
+                            YoutubeUtil.searchVideoList(MainActivity.this, "PLFgquLnL59amAlpdLTWJTX6BIPunJ8s-A");
                             YoutubeUtil.searchVideoLists(MainActivity.this, "UC-9-kyTW8ZkZNDHQJ6FgpwQ");
 
 //                    YoutubeUtil.searchVideoLists(MainActivity.this, "");

@@ -32,7 +32,7 @@ public class YoutubeUtil {
     public static final String[] SCOPES = {Scopes.PROFILE, YouTubeScopes.YOUTUBE};
 
     /**
-     * ¸ù¾Ý¹Ø¼ü×Ö²éÑ¯Êý¾ÝyoutubeÊÓÆµÁÐ±í
+     * ï¿½ï¿½Ý¹Ø¼ï¿½ï¿½Ö²ï¿½Ñ¯ï¿½ï¿½ï¿½youtubeï¿½ï¿½Æµï¿½Ð±ï¿½
      *
      * @param context
      * @param keywords
@@ -41,7 +41,7 @@ public class YoutubeUtil {
      */
 
     public static List<VideoItem> search(Context context, String keywords) throws Exception {
-        MyLog.v("---------------------");
+        MyLog.v("---------------------search");
         YouTube youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
             public void initialize(HttpRequest request) throws IOException {
             }
@@ -63,7 +63,7 @@ public class YoutubeUtil {
     }
 
     /**
-     * ¸ù¾ÝÀà±ðid²éÑ¯ÆµµÀÁÐ±í
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½Ñ¯Æµï¿½ï¿½ï¿½Ð±ï¿½
      *
      * @param context
      * @param categoryId
@@ -72,7 +72,7 @@ public class YoutubeUtil {
      */
 
     public static List<ChannelItem> searchChannels(Context context, String categoryId) throws Exception {
-        MyLog.v("---------------------");
+        MyLog.v("---------------------searchChannels");
         YouTube youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
             public void initialize(HttpRequest request) throws IOException {
             }
@@ -99,7 +99,7 @@ public class YoutubeUtil {
 
 
     /**
-     * ¸ù¾ÝÊÓÆµ¼¯ºÏid  ²éÑ¯ ÊÓÆµ¼¯ºÏ
+     * ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½id  ï¿½ï¿½Ñ¯ ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½
      *
      * @param context
      * @param playlistId
@@ -107,6 +107,7 @@ public class YoutubeUtil {
      * @throws Exception
      */
     public static List<VideoItem> searchVideoList(Context context, String playlistId) throws Exception {
+        MyLog.v("---------------------searchVideoList");
         List<VideoItem> items = new ArrayList<VideoItem>();
         YouTube youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
             public void initialize(HttpRequest request) throws IOException {
@@ -138,7 +139,7 @@ public class YoutubeUtil {
     }
 
     /**
-     * ¸ù¾ÝÊÓÆµ¼¯ºÏÁÐ±íid  ²éÑ¯ ÊÓÆµ¼¯ºÏÁÐ±í
+     * ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½id  ï¿½ï¿½Ñ¯ ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
      *
      * @param context
      * @param channelId
@@ -147,7 +148,7 @@ public class YoutubeUtil {
      */
 
     public static List<VideoLists> searchVideoLists(Context context, String channelId) throws Exception {
-        MyLog.v("---------------------");
+        MyLog.v("---------------------searchVideoLists");
         List<VideoLists> items = new ArrayList<VideoLists>();
         YouTube youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
             public void initialize(HttpRequest request) throws IOException {
@@ -156,20 +157,20 @@ public class YoutubeUtil {
 
         YouTube.Playlists.List mPlaylistsList = youtube.playlists().
                 list("id,snippet,localizations");
-        //ÉèÖÃ²ÎÊý
+        //ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½
         mPlaylistsList.setKey(KEY);
         mPlaylistsList.setChannelId(channelId);
 
-        //Ö´ÐÐµÃµ½Êý¾Ý
+        //Ö´ï¿½ÐµÃµï¿½ï¿½ï¿½ï¿½
         PlaylistListResponse playlistListResponse = mPlaylistsList.execute();
         List<Playlist> playlists = playlistListResponse.getItems();
 
-        //ÅÐ¶ÏÊý¾Ý
+        //ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½
         if (playlists.isEmpty()) {
             System.out.println("Can't find a playlist with channelId: " + channelId);
             return items;
         }
-        //×ª»»Êý¾Ý
+        //×ªï¿½ï¿½ï¿½ï¿½ï¿½
         for (Playlist result : playlists) {
             VideoLists item = new VideoLists();
             item.id = result.getId();
