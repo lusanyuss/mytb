@@ -23,6 +23,8 @@ import com.google.api.services.youtube.model.PlaylistItemListResponse;
 import com.google.api.services.youtube.model.PlaylistListResponse;
 import com.google.api.services.youtube.model.SearchListResponse;
 import com.google.api.services.youtube.model.SearchResult;
+import com.google.api.services.youtube.model.VideoCategory;
+import com.google.api.services.youtube.model.VideoCategoryListResponse;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -224,6 +226,35 @@ public class YoutubeUtil {
 
         for (ChannelSection result : channelSections) {
             ChannelSec item = new ChannelSec();
+            item.id = result.getId();
+            items.add(item);
+        }
+        MyLog.v(items.size() + "");
+        return items;
+    }
+
+
+    public static List<VideoCate> searchVideoCategorys(Context context, String regionCode) throws Exception {
+        MyLog.v("---------------------searchChannelSecs");
+        YouTube youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
+            public void initialize(HttpRequest request) throws IOException {
+            }
+        }).setApplicationName(context.getString(R.string.app_name)).build();
+
+        List<VideoCate> items = new ArrayList<VideoCate>();
+        YouTube.VideoCategories.List mYouTube = youtube.videoCategories().
+                list("id,snippet");
+        mYouTube.setKey(KEY);
+        mYouTube.setRegionCode(regionCode);
+
+        VideoCategoryListResponse listResponse = mYouTube.execute();
+        List<VideoCategory> categories = listResponse.getItems();
+
+        if (categories.isEmpty()) {
+            return items;
+        }
+        for (VideoCategory result : categories) {
+            VideoCate item = new VideoCate();
             item.id = result.getId();
             items.add(item);
         }
