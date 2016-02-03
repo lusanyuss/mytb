@@ -13,6 +13,10 @@ import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.YouTubeScopes;
 import com.google.api.services.youtube.model.Channel;
 import com.google.api.services.youtube.model.ChannelListResponse;
+import com.google.api.services.youtube.model.ChannelSection;
+import com.google.api.services.youtube.model.ChannelSectionListResponse;
+import com.google.api.services.youtube.model.GuideCategory;
+import com.google.api.services.youtube.model.GuideCategoryListResponse;
 import com.google.api.services.youtube.model.Playlist;
 import com.google.api.services.youtube.model.PlaylistItem;
 import com.google.api.services.youtube.model.PlaylistItemListResponse;
@@ -32,7 +36,6 @@ public class YoutubeUtil {
     public static final String[] SCOPES = {Scopes.PROFILE, YouTubeScopes.YOUTUBE};
 
     /**
-     *
      * @param context
      * @param keywords
      * @return
@@ -62,7 +65,6 @@ public class YoutubeUtil {
     }
 
     /**
-     *
      * @param context
      * @param categoryId
      * @return
@@ -97,45 +99,6 @@ public class YoutubeUtil {
 
 
     /**
-     *
-     * @param context
-     * @param channelId
-     * @return
-     * @throws Exception
-     */
-
-    public static List<VideoLists> searchVideoLists(Context context, String channelId) throws Exception {
-        MyLog.v("---------------------searchVideoLists");
-        List<VideoLists> items = new ArrayList<VideoLists>();
-        YouTube youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
-            public void initialize(HttpRequest request) throws IOException {
-            }
-        }).setApplicationName(context.getString(R.string.app_name)).build();
-
-        YouTube.Playlists.List mPlaylistsList = youtube.playlists().
-                list("id,snippet,localizations");
-        mPlaylistsList.setKey(KEY);
-        mPlaylistsList.setChannelId(channelId);
-
-        PlaylistListResponse playlistListResponse = mPlaylistsList.execute();
-        List<Playlist> playlists = playlistListResponse.getItems();
-
-        if (playlists.isEmpty()) {
-            System.out.println("Can't find a playlist with channelId: " + channelId);
-            return items;
-        }
-        for (Playlist result : playlists) {
-            VideoLists item = new VideoLists();
-            item.id = result.getId();
-            items.add(item);
-        }
-        MyLog.v(items.size() + "");
-        return items;
-    }
-
-
-    /**
-     *
      * @param context
      * @param playlistId
      * @return
@@ -173,54 +136,100 @@ public class YoutubeUtil {
         return items;
     }
 
+    /**
+     * 我我
+     *
+     * @param context
+     * @param channelId
+     * @return
+     * @throws Exception
+     */
+
+    public static List<VideoLists> searchVideoLists(Context context, String channelId) throws Exception {
+        MyLog.v("---------------------searchVideoLists");
+        List<VideoLists> items = new ArrayList<VideoLists>();
+        YouTube youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
+            public void initialize(HttpRequest request) throws IOException {
+            }
+        }).setApplicationName(context.getString(R.string.app_name)).build();
+        YouTube.Playlists.List mPlaylistsList = youtube.playlists().
+                list("id,snippet,localizations");
+        mPlaylistsList.setKey(KEY);
+        mPlaylistsList.setChannelId(channelId);
+        PlaylistListResponse playlistListResponse = mPlaylistsList.execute();
+        List<Playlist> playlists = playlistListResponse.getItems();
+
+        if (playlists.isEmpty()) {
+            System.out.println("Can't find a playlist with channelId: " + channelId);
+            return items;
+        }
+        for (Playlist result : playlists) {
+            VideoLists item = new VideoLists();
+            item.id = result.getId();
+            items.add(item);
+        }
+        MyLog.v(items.size() + "");
+        return items;
+    }
+
+    public static List<Category> searchCategorys(Context context, String hl, String regionCode) throws Exception {
+        MyLog.v("---------------------searchCategorys");
+        YouTube youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
+            public void initialize(HttpRequest request) throws IOException {
+            }
+        }).setApplicationName(context.getString(R.string.app_name)).build();
+
+        List<Category> items = new ArrayList<Category>();
+        YouTube.GuideCategories.List mYouTube = youtube.guideCategories().
+                list("id,snippet");
+        mYouTube.setKey(KEY);
+        mYouTube.setHl(hl);
+        mYouTube.setRegionCode(regionCode);
+
+        GuideCategoryListResponse listResponse = mYouTube.execute();
+        List<GuideCategory> guideCategories = listResponse.getItems();
+
+        if (guideCategories.isEmpty()) {
+            return items;
+        }
+        for (GuideCategory result : guideCategories) {
+            Category item = new Category();
+            item.id = result.getId();
+            items.add(item);
+        }
+        MyLog.v(items.size() + "");
+        return items;
+    }
 
 
+    public static List<ChannelSec> searchChannelSecs(Context context, String channelId) throws Exception {
+        MyLog.v("---------------------searchChannelSecs");
+        YouTube youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
+            public void initialize(HttpRequest request) throws IOException {
+            }
+        }).setApplicationName(context.getString(R.string.app_name)).build();
 
-//    YouTube.Channels.List channelRequest = youtube.channels().list("contentDetails");
-//    channelRequest.setMine(true);
-//    channelRequest.setFields("items/contentDetails,nextPageToken,pageInfo");
-//    ChannelListResponse channelResult = channelRequest.execute();
-//
-//    List<Channel> channelsList = channelResult.getItems();
-//
-//    if (channelsList != null) {
-//        // The user's default channel is the first item in the list.
-//        // Extract the playlist ID for the channel's videos from the
-//        // API response.
-//        String uploadPlaylistId =
-//                channelsList.get(0).getContentDetails().getRelatedPlaylists().getUploads();
-//
-//        // Define a list to store items in the list of uploaded videos.
-//        List<PlaylistItem> playlistItemList = new ArrayList<PlaylistItem>();
-//
-//        // Retrieve the playlist of the channel's uploaded videos.
-//        YouTube.PlaylistItems.List playlistItemRequest =
-//                youtube.playlistItems().list("id,contentDetails,snippet");
-//        playlistItemRequest.setPlaylistId(uploadPlaylistId);
-//
-//        // Only retrieve data used in this application, thereby making
-//        // the application more efficient. See:
-//        // https://developers.google.com/youtube/v3/getting-started#partial
-//        playlistItemRequest.setFields(
-//                "items(contentDetails/videoId,snippet/title,snippet/publishedAt),nextPageToken,pageInfo");
-//
-//        String nextToken = "";
-//
-//        // Call the API one or more times to retrieve all items in the
-//        // list. As long as the API response returns a nextPageToken,
-//        // there are still more items to retrieve.
-//        do {
-//            playlistItemRequest.setPageToken(nextToken);
-//            PlaylistItemListResponse playlistItemResult = playlistItemRequest.execute();
-//
-//            playlistItemList.addAll(playlistItemResult.getItems());
-//
-//            nextToken = playlistItemResult.getNextPageToken();
-//        } while (nextToken != null);
-//
-//        // Prints information about the results.
-//        prettyPrint(playlistItemList.size(), playlistItemList.iterator());
-//    }
+        List<ChannelSec> items = new ArrayList<ChannelSec>();
+        YouTube.ChannelSections.List mYouTube = youtube.channelSections().
+                list("id,snippet");
+        mYouTube.setKey(KEY);
+        mYouTube.setChannelId(channelId);
+
+        ChannelSectionListResponse listResponse = mYouTube.execute();
+        List<ChannelSection> channelSections = listResponse.getItems();
+
+        if (channelSections.isEmpty()) {
+            return items;
+        }
+
+        for (ChannelSection result : channelSections) {
+            ChannelSec item = new ChannelSec();
+            item.id = result.getId();
+            items.add(item);
+        }
+        MyLog.v(items.size() + "");
+        return items;
+    }
 
 
 }
