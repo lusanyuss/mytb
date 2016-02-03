@@ -63,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
                             YoutubeUtil.searchChannels(MainActivity.this, "GCQmVzdCBvZiBZb3VUdWJl");
                             YoutubeUtil.searchVideoList(MainActivity.this, "PLFgquLnL59amAlpdLTWJTX6BIPunJ8s-A");
                             YoutubeUtil.searchVideoLists(MainActivity.this, "UC-9-kyTW8ZkZNDHQJ6FgpwQ");
+                            YoutubeUtil.searchCategorys(MainActivity.this, null, "hk");
+//                            YoutubeUtil.searchChannelSecs();
+//                            YoutubeUtil.searchVideos();
+//                            YoutubeUtil.searchVideoCategorys();
 
 //                    YoutubeUtil.searchVideoLists(MainActivity.this, "");
                         }

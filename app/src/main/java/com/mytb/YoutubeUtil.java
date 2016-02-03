@@ -1,6 +1,7 @@
 package com.mytb;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.google.android.gms.common.Scopes;
 import com.google.api.client.http.HttpRequest;
@@ -185,8 +186,8 @@ public class YoutubeUtil {
         YouTube.GuideCategories.List mYouTube = youtube.guideCategories().
                 list("id,snippet");
         mYouTube.setKey(KEY);
-        mYouTube.setHl(hl);
-        mYouTube.setRegionCode(regionCode);
+        if (!TextUtils.isEmpty(hl)) mYouTube.setHl(hl);
+        if (!TextUtils.isEmpty(regionCode)) mYouTube.setRegionCode(regionCode);
 
         GuideCategoryListResponse listResponse = mYouTube.execute();
         List<GuideCategory> guideCategories = listResponse.getItems();
