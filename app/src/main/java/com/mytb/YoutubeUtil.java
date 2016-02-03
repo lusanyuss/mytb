@@ -263,4 +263,34 @@ public class YoutubeUtil {
     }
 
 
+    public static List<VideoItem> searchVideos(Context context, String regionCode) throws Exception {
+        MyLog.v("---------------------searchChannelSecs");
+        YouTube youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
+            public void initialize(HttpRequest request) throws IOException {
+            }
+        }).setApplicationName(context.getString(R.string.app_name)).build();
+
+        List<VideoItem> items = new ArrayList<VideoItem>();
+
+        YouTube.VideoCategories.List mYouTube = youtube.videoCategories().
+                list("id,snippet");
+        mYouTube.setKey(KEY);
+        mYouTube.setRegionCode(regionCode);
+
+        VideoCategoryListResponse listResponse = mYouTube.execute();
+        List<VideoCategory> categories = listResponse.getItems();
+
+        if (categories.isEmpty()) {
+            return items;
+        }
+        for (VideoCategory result : categories) {
+            VideoItem item = new VideoItem();
+            item.id = result.getId();
+            items.add(item);
+        }
+        MyLog.v(items.size() + "");
+        return items;
+    }
+
+
 }
