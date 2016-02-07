@@ -265,7 +265,7 @@ public class YoutubeUtil {
 
 
     public static List<VideoItem> searchVideos(Context context, String regionCode) throws Exception {
-        MyLog.v("---------------------searchChannelSecs");
+        MyLog.v("---------------------searchVideos");
         YouTube youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
             public void initialize(HttpRequest request) throws IOException {
             }
